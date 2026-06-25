@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olayinka Salako | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            padding-top: 80px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        header p {
+            max-width: 600px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 10%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Experience Grid */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-role {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .timeline-company {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-body ul {
+            list-style-type: square;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Grid Layouts (Education/Certifications) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Skills Layout */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-badge {
+            background-color: var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 10%;
+            text-align: center;
+            background-color: #0b0f19;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            header, section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">OLAYINKA SALAKO</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <header id="about">
+        <h1>Olayinka Salako</h1>
+        <h2>Administrative Specialist & Product Designer</h2>
+        <p>
+            Detail-oriented administrator and Chartered Member of the Nigerian Institute of Management. 
+            I bridge the gap between analytical management and user experience design—leveraging data insights, 
+            UX research, and tools like Figma, Power BI, and SQL to optimize workflows and design human-centered solutions.
+        </p>
+        <div class="btn-container">
+            <a href="mailto:salakogbolahan@yahoo.com" class="btn btn-primary">Contact Me</a>
+            <a href="https://www.linkedin.com/in/olayinka-salako-6b574710b" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+            <a href="https://ykkennel.blogspot.com" target="_blank" class="btn btn-secondary">Read My Blog</a>
+        </div>
+    </header>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-role">Administrative Officer</div>
+                        <div class="timeline-company">TONBOFA Law Practice — Lagos, Nigeria</div>
+                    </div>
+                    <div class="timeline-date">Jul 2024 - Present</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-role">Administrative Assistant</div>
+                        <div class="timeline-company">TONBOFA Law Practice — Lagos, Nigeria</div>
+                    </div>
+                    <div class="timeline-date">Oct 2022 - Jul 2024</div>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Typed, formatted, and proofread various corporate legal and company documents.</li>
+                        <li>Assisted HR teams with modern job postings and interview coordination.</li>
+                        <li>Prepared client invoices and operational financial reports using accounting software.</li>
+                        <li>Provided general high-level administrative and organizational support.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-role">Product Design Intern</div>
+                        <div class="timeline-company">Side Hustle — Remote</div>
+                    </div>
+                    <div class="timeline-date">Sep 2022 - Nov 2022</div>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Collaborated with cross-functional bootcamp teams to deliver beautiful, functional digital solutions.</li>
+                        <li>Built interactive prototypes and assisted heavily in rigorous user experience research.</li>
+                        <li>Drove concepts from initial logical user flows to highly functional interface designs.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-role">Product Design Intern</div>
+                        <div class="timeline-company">Zuri Team, Inc. — Remote</div>
+                    </div>
+                    <div class="timeline-date">May 2022 - Aug 2022</div>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Created scalable design systems featuring fluid user flows, structured wireframes, and high-fidelity mockups.</li>
+                        <li>Collaborated with global peers to enhance product accessibility and end-user experiences.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-role">Team Member, Account Maintenance</div>
+                        <div class="timeline-company">UBA Group — Lagos, Nigeria</div>
+                    </div>
+                    <div class="timeline-date">Dec 2020 - Aug 2022</div>
+                </div>
+                <div class="timeline-body">
+                    <ul>
+                        <li>Executed core account maintenance duties in line with stringent banking procedures and strict SLA benchmarks.</li>
+                        <li>Processed precise customer instructions to ensure stellar quality output and client satisfaction scores.</li>
+                        <li>Proactively handled account discrepancies and recommended custom banking solutions within policy parameters.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Core Skills & Tools</h2>
+        <div class="skills-container">
+            <span class="skill-badge">UX/UI Design (Figma)</span>
+            <span class="skill-badge">UX Research & Prototyping</span>
+            <span class="skill-badge">Business Analysis & SQL</span>
+            <span class="skill-badge">Data Visualization (Power BI / Excel)</span>
+            <span class="skill-badge">Project Coordination (Jira)</span>
+            <span class="skill-badge">Administrative Management</span>
+            <span class="skill-badge">Critical Thinking & Analytics</span>
+            <span class="skill-badge">Teamwork & Leadership</span>
+            <span class="skill-badge">Slide Presentations</span>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>B.Sc. Business Administration and Management</h3>
+                <p>Ajayi Crowther University, Oyo</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">2021 - 2023</p>
+            </div>
+            <div class="card">
+                <h3>Higher National Diploma (HND), Business Administration</h3>
+                <p>Gateway ICT Polytechnic, Saapade</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">2016 - 2018</p>
+            </div>
+            <div class="card">
+                <h3>National Diploma (ND), Business Administration</h3>
+                <p>Moshood Abiola Polytechnic, Abeokuta</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">2013 - 2015</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <h2 class="section-title">Professional Certifications</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Associate Member & Proficiency Certificate</h3>
+                <p>Nigerian Institute of Management (Chartered)</p>
+            </div>
+            <div class="card">
+                <h3>Diploma in Business Analytics</h3>
+                <p>Pluralcode Academy</p>
+            </div>
+            <div class="card">
+                <h3>Product Design (UX/UI)</h3>
+                <p>Zuri Team, Inc. & Side Hustle</p>
+            </div>
+            <div class="card">
+                <h3>User Interface Design with Figma</h3>
+                <p>Alison</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Olayinka Salako. All Rights Reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #475569;">Lagos, Nigeria | salakogbolahan@yahoo.com</p>
+    </footer>
+
+</body>
+</html>
